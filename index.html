@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <header class="logo-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/3771/3771518.png" alt="Libreta" class="mx-auto" width="80">
+            <h1 class="main-title">Contact List</h1>
+        </header>
+
+        <form id="contact-form" novalidate>
+            <input type="hidden" id="edit-id">
+            
+            <div class="input-group">
+                <div class="field-container">
+                    <input type="text" id="name" placeholder="Nombre completo">
+                    <span class="error-msg">Por favor, escriba su nombre.</span>
+                </div>
+                <div class="field-container">
+                    <input type="number" id="phone" placeholder="Número de contacto">
+                    <span class="error-msg">Por favor, digite su número.</span>
+                </div>
+                <div class="field-container">
+                    <input type="text" id="city" placeholder="Ciudad / País de origen">
+                    <span class="error-msg">Por favor, ingrese la ciudad.</span>
+                </div>
+                <div class="field-container">
+                    <input type="text" id="address" placeholder="Dirección">
+                    <span class="error-msg">Por favor, ingrese la dirección.</span>
+                </div>
+            </div>
+            
+            <section class="gender-section">
+                <p class="gender-title">Selecciona su género:</p>
+                <div class="gender-options-wrapper centered-small">
+    <label class="gender-option small">
+        <span class="flex items-center gap-2">
+            <input type="radio" name="gender" value="Femenino">
+            <i class="bi bi-person-fill text-pink-400"></i> Femenino
+        </span>
+    </label>
+
+    <label class="gender-option small">
+        <span class="flex items-center gap-2">
+            <input type="radio" name="gender" value="Masculino">
+            <i class="bi bi-person-fill text-blue-400"></i> Masculino
+        </span>
+    </label>
+</div>
+                <span id="gender-error" class="error-msg text-center">Debes seleccionar un género.</span>
+            </section>
+
+            <button type="submit" id="btn-submit" class="btn-primary">
+                <span id="btn-text"><i class="bi bi-person-plus-fill"></i> AÑADIR CONTACTO</span>
+                <div id="btn-spinner" class="hidden flex items-center gap-2">
+                    <div class="spinner"></div>
+                    <span>Procesando...</span>
+                </div>
+            </button>
+        </form>
+
+        <div id="contacts-list" class="list-container"></div>
+    </main>
+
+    <dialog id="modal-confirm" class="custom-modal">
+        <div class="modal-body">
+            <i class="bi bi-exclamation-triangle text-red-400 text-5xl"></i>
+            <h3>¿Estás segura?</h3>
+            <p id="delete-msg"></p>
+            <div class="modal-btns">
+                <button id="confirm-delete" class="btn-danger">Eliminar</button>
+                <button onclick="document.getElementById('modal-confirm').close()" class="btn-gray">Cancelar</button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="modal-delete-success" class="custom-modal">
+        <div class="modal-body">
+            <i class="bi bi-trash-check-fill text-green-400 text-5xl"></i>
+            <h3>¡Eliminado!</h3>
+            <p>Contacto eliminado con éxito.</p>
+            <button onclick="document.getElementById('modal-delete-success').close()" class="btn-primary mt-4">Aceptar</button>
+        </div>
+    </dialog>
+
+    <dialog id="modal-success" class="custom-modal">
+        <div class="modal-body">
+            <i class="bi bi-check-circle-fill text-green-400 text-5xl"></i>
+            <h3>¡Éxito!</h3>
+            <p>Contacto actualizado correctamente.</p>
+            <button onclick="document.getElementById('modal-success').close()" class="btn-primary mt-4">Aceptar</button>
+        </div>
+    </dialog>
+
+    <script src="script.js"></script>
+</body>
+</html>
