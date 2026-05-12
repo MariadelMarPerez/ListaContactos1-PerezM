@@ -8,14 +8,14 @@ const btnSpinner = document.getElementById('btn-spinner');
 let contacts = [];
 let currentIdToDelete = null;
 
-// 🔹 CARGAR DATOS
+// CARGAR DATOS
 async function loadContacts() {
     const res = await fetch('http://localhost:3006/contactos');
     contacts = await res.json();
     render();
 }
 
-// 🔹 RENDER
+//  RENDER
 function render() {
     contactsList.innerHTML = '';
 
@@ -72,13 +72,13 @@ function render() {
     });
 }
 
-// 🔹 ACORDEON
+
 function toggleAccordion(id) {
     const body = document.getElementById(`body-${id}`);
     body.classList.toggle('active');
 }
 
-// 🔹 VALIDAR
+// VALIDAR
 function validate() {
     let isValid = true;
 
@@ -100,7 +100,7 @@ function validate() {
     return isValid && !!gender;
 }
 
-// 🔹 SUBMIT
+//  SUBMIT
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validate()) return;
@@ -153,7 +153,7 @@ contactForm.addEventListener('submit', (e) => {
     }, 1200);
 });
 
-// 🔹 EDITAR
+//  EDITAR
 window.loadForEdit = (id) => {
     const c = contacts.find(x => x.id == id);
 
@@ -168,7 +168,7 @@ window.loadForEdit = (id) => {
     btnText.innerHTML = '<i class="bi bi-check-circle-fill"></i> ACTUALIZAR';
 };
 
-// 🔹 ELIMINAR
+//  ELIMINAR
 window.confirmDelete = (id, name) => {
     currentIdToDelete = id;
 
@@ -188,6 +188,6 @@ document.getElementById('confirm-delete').onclick = async () => {
     loadContacts();
 };
 
-// 🔹 INICIO
+// INICIO
 loadContacts();
 ``
